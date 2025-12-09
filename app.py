@@ -6,7 +6,11 @@ import pandas as pd
 
 df = nhl.df.copy()
 
-player = st.selectbox(
+
+st.title("NHL Explorer")
+st.text("Use the sidebar configurations to customize each plot.")
+
+player = st.sidebar.selectbox(
     "Select a player: ",
     options = sorted(df["Player"].unique()),
     index = None
@@ -15,20 +19,20 @@ player = st.selectbox(
 team_map = {t[:3]: t for t in df["Team"].unique()}
 team_abbrs = sorted(team_map.keys())
 
-team = st.selectbox(
+team = st.sidebar.selectbox(
     "Select a team: ",
     options = team_abbrs,
     index = None
 )
 
-season = st.selectbox(
+season = st.sidebar.selectbox(
     "Select a season: ",
     options = sorted(df["Season"].unique()),
     index = None
 )
 
-x_metric = st.selectbox("Select a metric:", options=df.columns, index=list(df.columns).index("G"))
-y_metric = st.selectbox("Select a metric:", options=df.columns, index=list(df.columns).index("A"))
+x_metric = st.sidebar.selectbox("Select a metric:", options=df.columns, index=list(df.columns).index("G"))
+y_metric = st.sidebar.selectbox("Select a metric:", options=df.columns, index=list(df.columns).index("A"))
 
 metrics = [x_metric, y_metric]
 
@@ -46,9 +50,11 @@ if player is not None:
     if player is not None:
         if season is not None:
             table1 = nhl.get_player_stats(player, season, aggr)
+            table1 = table1[["Player", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
             st.table(table1)
         else:
             table1 = nhl.get_player_stats(player, aggr=aggr)
+            table1 = table1[["Player", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
             st.table(table1)
 else:
     st.text("Select a player to view specific statistics.")
@@ -56,6 +62,7 @@ else:
 
 if team is not None and season is not None:
     table2 = nhl.get_roster_stats(team, season)
+    table2 = table2[["Player", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
     st.table(table2)
 else:
     st.text("Select a team and season to view roster stats.")
