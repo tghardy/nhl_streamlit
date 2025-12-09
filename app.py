@@ -39,3 +39,23 @@ if season is not None:
     st.plotly_chart(fig2, use_container_width=True)
 else:
     st.text("Select a season and player to view plots relative to league average.")
+
+
+if player is not None:
+    aggr = st.toggle("Aggregated:")
+    if player is not None:
+        if season is not None:
+            table1 = nhl.get_player_stats(player, season, aggr)
+            st.table(table1)
+        else:
+            table1 = nhl.get_player_stats(player, aggr=aggr)
+            st.table(table1)
+else:
+    st.text("Select a player to view specific statistics.")
+
+
+if team is not None and season is not None:
+    table2 = nhl.get_roster_stats(team, season)
+    st.table(table2)
+else:
+    st.text("Select a team and season to view roster stats.")
