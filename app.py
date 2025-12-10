@@ -48,11 +48,11 @@ if player is not None:
     if player is not None:
         if season is not None:
             table1 = nhl.get_player_stats(player, season, aggr)
-            table1 = table1[["Player", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
+            table1 = table1[["Player", "Pos", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
             st.table(table1)
         else:
             table1 = nhl.get_player_stats(player, aggr=aggr)
-            table1 = table1[["Player", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
+            table1 = table1[["Player", "Pos", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
             st.table(table1)
 else:
     st.text("Select a player to view specific statistics.")
@@ -60,7 +60,7 @@ else:
 
 if team is not None and season is not None:
     table2 = nhl.get_roster_stats(team, season)
-    table2 = table2[["Player", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
+    table2 = table2[["Player", "Pos", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
     st.table(table2)
 else:
     st.text("Select a team and season to view roster stats.")
