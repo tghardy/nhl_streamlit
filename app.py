@@ -2,8 +2,6 @@ import streamlit as st
 import nhl_vis_386 as nhl
 import pandas as pd
 
-# player selectbox
-
 df = nhl.df.copy()
 
 
@@ -38,7 +36,7 @@ metrics = [x_metric, y_metric]
 
 fig = nhl.score_scatter(player, season, team, metrics=metrics)
 st.plotly_chart(fig, use_container_width=True)
-if season is not None:
+if season is not None and player is not None:
     fig2 = nhl.score_plot(player, season)
     st.plotly_chart(fig2, use_container_width=True)
 else:
