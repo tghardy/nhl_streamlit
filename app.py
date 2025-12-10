@@ -29,15 +29,26 @@ season = st.sidebar.selectbox(
     index = None
 )
 
+position = st.sidebar.selectbox(
+    "Select a position: ",
+    options = sorted(df["Pos"].unique()),
+    index = None
+)
+
+if position is None:
+    dfc = df.copy()
+else:
+    dfc = df[df["Pos"] == position].copy()
+
 x_metric = st.sidebar.selectbox("Select a metric:", options=df.columns, index=list(df.columns).index("G"))
 y_metric = st.sidebar.selectbox("Select a metric:", options=df.columns, index=list(df.columns).index("A"))
 
 metrics = [x_metric, y_metric]
 
-fig = nhl.score_scatter(player, season, team, metrics=metrics)
+fig = nhl.score_scatter(player, season, team, metrics=metrics, df=dfc)
 st.plotly_chart(fig, use_container_width=True)
 if season is not None and player is not None:
-    fig2 = nhl.score_plot(player, season)
+    fig2 = nhl.score_plot(player, season, df=dfc)
     st.plotly_chart(fig2, use_container_width=True)
 else:
     st.text("Select a season and player to view plots relative to league average.")
@@ -47,7 +58,7 @@ if player is not None:
     aggr = st.toggle("Aggregated:")
     if player is not None:
         if season is not None:
-            table1 = nhl.get_player_stats(player, season, aggr)
+            table1 = nhl.get_player_stats(player, season, aggr, df=dfc)
             table1 = table1[["Player", "Pos", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
             st.table(table1)
         else:

@@ -463,7 +463,7 @@ wheels = [
 
 [[package]]
 name = "nhl-vis-386"
-version = "0.1.9"
+version = "0.1.10"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "matplotlib" },
@@ -472,9 +472,9 @@ dependencies = [
     { name = "pandas" },
     { name = "plotly" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/51/04/097cdd4b7ac9937cf121198653f2423019f266ce96de1909379fdc9248e7/nhl_vis_386-0.1.9.tar.gz", hash = "sha256:5f407c7a64e48d9a5dd7249c23273efd9efcaaa287faa971a49357f83a3863bb", size = 393854, upload-time = "2025-12-09T02:18:40.92Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/5f/ee/af2f6348041900906fe48c79ef1f5f869916451d586b810c7bd5f8eb6fa7/nhl_vis_386-0.1.10.tar.gz", hash = "sha256:0a5478e28f24b42fc5e8f33b5c7aba14a5cb6647df79b99ba7588c694d05514b", size = 393852, upload-time = "2025-12-10T20:39:09.782Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d0/5b/5ddb089449a7aaa0a68c444f2251c897b0e93f2865566a4a6dcc54df2c62/nhl_vis_386-0.1.9-py3-none-any.whl", hash = "sha256:44b3c5dea3c28e3196a4c52a222a655d724f146d04e1a1418c5c12a719f7a699", size = 394400, upload-time = "2025-12-09T02:18:38.648Z" },
+    { url = "https://files.pythonhosted.org/packages/12/0b/1b9a6b21a9959c51785f67565176334bc3832aeab7ef0da60cb39fc6f57a/nhl_vis_386-0.1.10-py3-none-any.whl", hash = "sha256:a6408788582cc4470d3206ceccef81ae24100a354ace81f88d12c018beee7843", size = 394409, upload-time = "2025-12-10T20:39:07.706Z" },
 ]
 
 [[package]]
@@ -894,7 +894,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "nhl-vis-386", specifier = ">=0.1.9" },
+    { name = "nhl-vis-386", specifier = ">=0.1.10" },
     { name = "pandas", specifier = ">=2.3.3" },
     { name = "streamlit", specifier = ">=1.51.0" },
 ]
