@@ -50,8 +50,9 @@ st.plotly_chart(fig, use_container_width=True)
 if season is not None and player is not None:
     if player not in dfc["Player"]:
         st.text(f"Error- {player} does not play position: {position}")
-    fig2 = nhl.score_plot(player, season, df=dfc)
-    st.plotly_chart(fig2, use_container_width=True)
+    else:
+        fig2 = nhl.score_plot(player, season, df=dfc)
+        st.plotly_chart(fig2, use_container_width=True)
 else:
     st.text("Select a season and player to view plots relative to league average.")
 
