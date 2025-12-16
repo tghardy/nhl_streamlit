@@ -58,7 +58,7 @@ if player is not None:
     aggr = st.toggle("Aggregated:")
     if player is not None:
         if season is not None:
-            table1 = nhl.get_player_stats(player, season, aggr, df=dfc)
+            table1 = nhl.get_player_stats(player, season, aggr)
             table1 = table1[["Player", "Pos", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
             st.table(table1)
         else:
