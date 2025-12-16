@@ -48,6 +48,8 @@ metrics = [x_metric, y_metric]
 fig = nhl.score_scatter(player, season, team, metrics=metrics, df=dfc)
 st.plotly_chart(fig, use_container_width=True)
 if season is not None and player is not None:
+    if player not in dfc["Player"]:
+        st.text(f"Error- {player} does not play position: {position}")
     fig2 = nhl.score_plot(player, season, df=dfc)
     st.plotly_chart(fig2, use_container_width=True)
 else:
@@ -58,7 +60,7 @@ if player is not None:
     aggr = st.toggle("Aggregated:")
     if player is not None:
         if season is not None:
-            table1 = nhl.get_player_stats(player, season, aggr)
+            table1 = nhl.get_player_stats(player, season, aggr=aggr)
             table1 = table1[["Player", "Pos", "G", "A", "P", "FOW%", "GP", "PIM", "+/-", "S%", "S/C", "S", "TOI/GP"]]
             st.table(table1)
         else:
