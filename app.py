@@ -7,6 +7,7 @@ df = nhl.df.copy()
 
 st.title("NHL Explorer")
 st.text("Use the sidebar configurations to customize each plot.")
+st.text("Point size represents number of games played (i.e. smaller points represent players with less games)")
 
 player = st.sidebar.selectbox(
     "Select a player: ",
